@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adicionar Filme</title>
+  </head>
+  <body>
+    <h1>Adicionar Filme</h1>
+    <form>
+      <label for="nome-filme">Nome do filme:</label>
+      <input type="text" id="nome-filme" name="nome-filme"><br><br>
+php
+Copy code
+  <label for="ano-lancamento">Ano de lançamento:</label>
+  <input type="number" id="ano-lancamento" name="ano-lancamento"><br><br>
+
+  <label for="nome-protagonista">Nome do(a) protagonista:</label>
+  <input type="text" id="nome-protagonista" name="nome-protagonista"><br><br>
+
+  <input type="button" value="Adicionar" onclick="adicionarFilme()">
+</form>
+
+<h2>Filmes adicionados:</h2>
+<ul id="lista-filmes"></ul>
+
+<script>
+  
+  var database = [];
+
+  function adicionarFilme() {
+    
+    var nomeFilme = document.getElementById("nome-filme").value;
+    var anoLancamento = document.getElementById("ano-lancamento").value;
+    var nomeProtagonista = document.getElementById("nome-protagonista").value;
+
+    
+    var filme = {
+      nome: nomeFilme,
+      lancamento: anoLancamento,
+      protagonista: nomeProtagonista
+    };
+
+    
+    database.push(filme);
+
+   
+    var listaFilmes = document.getElementById("lista-filmes");
+    var itemFilme = document.createElement("li");
+    itemFilme.textContent = "Nome do filme: " + filme.nome + ", Lançamento: " + filme.lancamento + ", Protagonista: " + filme.protagonista;
+    listaFilmes.appendChild(itemFilme);
+  }
+</script>
+  </body>
+</html>
